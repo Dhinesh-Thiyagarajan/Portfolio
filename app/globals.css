@@ -24,3 +24,23 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+/* ================= CURSOR GLOW ================= */
+
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(
+    circle,
+    rgba(168, 85, 247, 0.35),
+    rgba(168, 85, 247, 0.15),
+    transparent 70%
+  );
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  filter: blur(45px);
+  z-index: 9999;
+  transition: opacity 0.15s ease-out;
+}
