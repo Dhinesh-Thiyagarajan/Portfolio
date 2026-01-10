@@ -3,16 +3,36 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
+type Particle = {
+  x: string
+  y: string
+  duration: number
+  delay: number
+}
+
 export default function Hero() {
   const [offset, setOffset] = useState(0)
+  const [particles, setParticles] = useState<Particle[]>([])
 
-  // Parallax background
+  // Parallax background (UNCHANGED)
   useEffect(() => {
     const handleScroll = () => {
       setOffset(window.scrollY * 0.35)
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Generate particles ONLY on client (hydration-safe)
+  useEffect(() => {
+    setParticles(
+      Array.from({ length: 18 }).map(() => ({
+        x: Math.random() * 100 + 'vw',
+        y: Math.random() * 100 + 'vh',
+        duration: 10 + Math.random() * 10,
+        delay: Math.random() * 6,
+      }))
+    )
   }, [])
 
   return (
@@ -37,13 +57,13 @@ export default function Hero() {
 
       {/* ================= PARTICLES ================= */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {Array.from({ length: 18 }).map((_, i) => (
+        {particles.map((p, i) => (
           <motion.span
             key={i}
             className="absolute w-1 h-1 rounded-full bg-purple-400/40"
             initial={{
-              x: Math.random() * 100 + 'vw',
-              y: Math.random() * 100 + 'vh',
+              x: p.x,
+              y: p.y,
               opacity: 0,
             }}
             animate={{
@@ -51,9 +71,9 @@ export default function Hero() {
               opacity: [0, 1, 0],
             }}
             transition={{
-              duration: 10 + Math.random() * 10,
+              duration: p.duration,
               repeat: Infinity,
-              delay: Math.random() * 6,
+              delay: p.delay,
               ease: 'linear',
             }}
           />
@@ -62,7 +82,6 @@ export default function Hero() {
 
       {/* ================= CONTENT ================= */}
       <div className="relative z-10 text-center px-6">
-        {/* Name reveal */}
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -73,7 +92,6 @@ export default function Hero() {
           <span className="text-purple-400">Thiyagarajan</span>
         </motion.h1>
 
-        {/* Subtitle reveal */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -83,7 +101,6 @@ export default function Hero() {
           Computer Science Student · Databases · AI · Product Development
         </motion.p>
 
-        {/* Buttons reveal */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

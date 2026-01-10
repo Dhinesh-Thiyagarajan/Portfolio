@@ -2,16 +2,15 @@
 
 import { useRef } from 'react'
 
-export default function Magnetic({
-  children,
-  strength = 0.25,
-}: {
+type MagneticProps = {
   children: React.ReactNode
   strength?: number
-}) {
-  const ref = useRef<HTMLDivElement>(null)
+}
 
-  const onMouseMove = (e: React.MouseEvent) => {
+export default function Magnetic({ children, strength = 0.25 }: MagneticProps) {
+  const ref = useRef<HTMLElement>(null)
+
+  const onMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     if (!ref.current) return
 
     const rect = ref.current.getBoundingClientRect()
@@ -29,13 +28,13 @@ export default function Magnetic({
   }
 
   return (
-    <div
+    <span
       ref={ref}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
       className="inline-block transition-transform duration-300 ease-out"
     >
       {children}
-    </div>
+    </span>
   )
 }

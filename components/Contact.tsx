@@ -3,12 +3,13 @@
 import { Mail, Linkedin, Github, MessageCircle } from 'lucide-react'
 import { useRef } from 'react'
 
-/* ---------- magnetic hook ---------- */
+/* ---------- magnetic hook (UNCHANGED LOGIC) ---------- */
 function useMagnetic() {
-  const ref = useRef<HTMLAnchorElement | HTMLDivElement>(null)
+  const ref = useRef<HTMLDivElement | HTMLAnchorElement | null>(null)
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     if (!ref.current) return
+
     const rect = ref.current.getBoundingClientRect()
     const x = e.clientX - rect.left - rect.width / 2
     const y = e.clientY - rect.top - rect.height / 2
@@ -82,7 +83,7 @@ export default function Contact() {
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                ref={magnetic.ref}
+                ref={magnetic.ref as React.RefObject<HTMLAnchorElement>}
                 onMouseMove={magnetic.handleMouseMove}
                 onMouseLeave={magnetic.reset}
                 className="
@@ -108,14 +109,13 @@ export default function Contact() {
           })}
         </div>
 
-        {/* CTA */}
         <MagneticCTA />
       </div>
     </section>
   )
 }
 
-/* ---------- CTA BUTTON ---------- */
+/* ---------- CTA ---------- */
 function MagneticCTA() {
   const magnetic = useMagnetic()
 
@@ -125,7 +125,7 @@ function MagneticCTA() {
         href="https://wa.me/918431114223"
         target="_blank"
         rel="noopener noreferrer"
-        ref={magnetic.ref}
+        ref={magnetic.ref as React.RefObject<HTMLAnchorElement>}
         onMouseMove={magnetic.handleMouseMove}
         onMouseLeave={magnetic.reset}
         className="
