@@ -52,8 +52,8 @@ export default function Contact() {
             {
               icon: Mail,
               title: 'Email',
-              text: 'dhineshtv@gmail.com',
-              href: 'mailto:dhineshtv@gmail.com',
+              text: 'dhineshttv@gmail.com',
+              href: 'mailto:dhineshttv@gmail.com',
             },
             {
               icon: Linkedin,
