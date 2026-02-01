@@ -54,7 +54,10 @@ export default function Navbar() {
             'projects',
             'education',
             'certifications',
+<<<<<<< HEAD
             'experience',
+=======
+>>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
             'contact',
           ].map((id) => (
             <a

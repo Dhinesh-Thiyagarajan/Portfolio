@@ -64,6 +64,7 @@ export default function Education() {
         </div>
 
         {/* timeline */}
+<<<<<<< HEAD
         <div className="relative flex flex-col md:flex-row md:items-center md:justify-between gap-10 md:gap-0">
           {/* base line */}
           <div className="hidden md:block absolute left-0 right-0 top-1/2 h-[2px] bg-purple-800/30" />
@@ -81,11 +82,26 @@ export default function Education() {
 
           {/* shimmer overlay */}
           <div className="hidden md:block absolute left-0 right-0 top-1/2 h-[2px] overflow-hidden pointer-events-none">
+=======
+        <div className="relative flex items-center justify-between">
+          {/* base line */}
+          <div className="absolute left-0 right-0 top-1/2 h-[2px] bg-purple-800/30" />
+
+          {/* progress fill */}
+          <div
+            className="absolute left-0 top-1/2 h-[2px] bg-purple-400 shadow-[0_0_20px_rgba(168,85,247,0.6)] transition-all duration-300"
+            style={{ width: `${progress * 100}%` }}
+          />
+
+          {/* shimmer overlay */}
+          <div className="absolute left-0 right-0 top-1/2 h-[2px] overflow-hidden pointer-events-none">
+>>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
             <div
               className="h-full w-1/3 bg-gradient-to-r from-transparent via-purple-400/50 to-transparent animate-[shimmer_7s_linear_infinite]"
               style={{ transform: `translateX(${progress * 200}%)` }}
             />
           </div>
+<<<<<<< HEAD
           <div className="block md:hidden absolute left-1/2 top-0 bottom-0 w-[2px] overflow-hidden pointer-events-none" style={{transform:'translateX(-50%)'}}>
             <div
               className="w-full h-1/3 bg-gradient-to-b from-transparent via-purple-400/50 to-transparent animate-[shimmer-vert_7s_linear_infinite]"
@@ -142,6 +158,53 @@ export default function Education() {
                   Learning • Growth • Innovation
                 </p>
               </div>
+=======
+
+          {/* cards */}
+          <TimelineCard
+            title="Shantinikethan Institution of Education"
+            subtitle="School Studies"
+            time="Until 2020"
+          />
+
+          <TimelineCard
+            title="Jain PU College"
+            subtitle="Pre-University Studies"
+            time="2020 – 2022"
+          />
+
+          <TimelineCard
+            title="Dayananda Sagar University"
+            subtitle="B.Tech – Computer Science & Technology"
+            time="2023 – 2027"
+          />
+
+          {/* future */}
+          <div className="relative flex flex-col items-center w-1/4">
+            <div className="w-4 h-4 rounded-full bg-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.8)] z-10" />
+
+            <div
+              ref={futureRef}
+              className={`
+                mt-6 px-6 py-4 rounded-2xl
+                border border-dashed border-purple-500/50
+                bg-[#0B0B14]/60 backdrop-blur
+                text-center
+                transition-all duration-700
+                ${
+                  futureVisible
+                    ? 'opacity-100 translate-y-0 scale-100'
+                    : 'opacity-0 translate-y-6 scale-95'
+                }
+              `}
+            >
+              <h4 className="text-purple-400 font-semibold text-lg">
+                Unexplored Future
+              </h4>
+              <p className="text-gray-400 text-sm mt-1">
+                Learning • Growth • Innovation
+              </p>
+>>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
             </div>
           </div>
         </div>
@@ -157,6 +220,7 @@ export default function Education() {
             transform: translateX(300%);
           }
         }
+<<<<<<< HEAD
         @keyframes shimmer-vert {
           0% {
             transform: translateY(-100%);
@@ -165,6 +229,8 @@ export default function Education() {
             transform: translateY(300%);
           }
         }
+=======
+>>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
       `}</style>
     </section>
   )
@@ -176,15 +242,24 @@ function TimelineCard({
   title,
   subtitle,
   time,
+<<<<<<< HEAD
   mobile,
+=======
+>>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
 }: {
   title: string
   subtitle: string
   time: string
+<<<<<<< HEAD
   mobile?: boolean
 }) {
   return (
     <div className="relative flex flex-col items-center w-full md:w-1/4 mb-10 md:mb-0">
+=======
+}) {
+  return (
+    <div className="relative flex flex-col items-center w-1/4">
+>>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
       <div className="w-4 h-4 rounded-full bg-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.8)] z-10" />
 
       <div

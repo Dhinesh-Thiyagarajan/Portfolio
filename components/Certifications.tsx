@@ -69,6 +69,7 @@ const certifications = [
     icon: Database,
   },
   {
+<<<<<<< HEAD
     title: 'AWS Certified Solutions Architect – Associate',
     org: 'Amazon Web Services (AWS)',
     year: '2025',
@@ -78,6 +79,8 @@ const certifications = [
     icon: Database,
   },
   {
+=======
+>>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
     title: 'Modern React with Hooks & Context',
     org: 'Meta',
     year: '2024',
@@ -169,27 +172,46 @@ export default function Certifications() {
         </div>
 
         {/* grid */}
+<<<<<<< HEAD
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-1 sm:px-0 transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]">
+=======
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+>>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
           {certifications.map((cert, index) => {
             const Icon = cert.icon
             return (
               <div
                 key={index}
                 className={`
+<<<<<<< HEAD
                   group rounded-2xl p-4 sm:p-6
                   bg-white/5 backdrop-blur-md
                   border border-purple-500/20
                   transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]
+=======
+                  group rounded-2xl p-6
+                  bg-white/5 backdrop-blur-md
+                  border border-purple-500/20
+                  transition-all duration-300 ease-out
+>>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
                   hover:-translate-y-2
                   hover:border-purple-400
                   hover:shadow-[0_0_40px_rgba(168,85,247,0.4)]
                   ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
                 `}
+<<<<<<< HEAD
                 style={{ transitionDelay: `${index * 70}ms`, transitionProperty: 'box-shadow, border-color, transform, opacity, background' }}
               >
                 {/* icon */}
                 <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-xl bg-purple-500/15 mb-3 sm:mb-4">
                   <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-purple-400" />
+=======
+                style={{ transitionDelay: `${index * 70}ms` }}
+              >
+                {/* icon */}
+                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-purple-500/15 mb-4">
+                  <Icon className="w-6 h-6 text-purple-400" />
+>>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
                 </div>
 
                 {/* badge */}
@@ -197,11 +219,19 @@ export default function Certifications() {
                   {cert.category}
                 </span>
 
+<<<<<<< HEAD
                 <h3 className="text-base sm:text-lg font-semibold text-white mb-1 sm:mb-2">
                   {cert.title}
                 </h3>
 
                 <p className="text-xs sm:text-sm text-gray-400 mb-2 sm:mb-3">
+=======
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  {cert.title}
+                </h3>
+
+                <p className="text-sm text-gray-400 mb-3">
+>>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
                   {cert.org}
                 </p>
 
@@ -210,7 +240,11 @@ export default function Certifications() {
                 </span>
 
                 {/* description */}
+<<<<<<< HEAD
                 <p className="mt-2 sm:mt-4 text-xs sm:text-sm text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+=======
+                <p className="mt-4 text-sm text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+>>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
                   {cert.description}
                 </p>
               </div>
