@@ -5,7 +5,7 @@ import Navbar from '@/components/Navbar'
 
 export const metadata: Metadata = {
   title: 'Dhinesh Thiyagarajan | Portfolio',
-  description: 'Personal portfolio of Dhinesh Thiyagarajan',
+  description: 'Personal portfolio of Dhinesh Thiyagarajan - Computer Science Student specializing in AI/ML, Databases, and Full-Stack Development',
 }
 
 export default function RootLayout({
