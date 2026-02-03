@@ -13,6 +13,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  // Force Vercel redeploy - Updated portfolio with animations
   return (
     <html lang="en">
       <body className="bg-black text-white overflow-x-hidden">
