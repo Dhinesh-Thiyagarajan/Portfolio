@@ -1,7 +1,7 @@
-<<<<<<< HEAD
-
 'use client'
 
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 import { Briefcase, Gamepad2 } from 'lucide-react'
 
 const experiences = [
@@ -20,297 +20,253 @@ const experiences = [
     ]
   },
   {
-    company: 'Game Development Lead',
-    role: 'Paid Game Dev Intern',
+    company: 'Dayananda Sagar University',
+    role: 'Game Development Lead',
     location: 'Bengaluru, India',
     period: 'January 2026',
     icon: Gamepad2,
     highlights: [
-      'Led a small development team using Godot engine to build a 2D Top-down game for my college as a client.',
-      'Engineered and designed a navigable digital twin of the college campus for DSU International Affairs, translating real-world layouts into an interactive 2D experience.',
-      'Acted as the primary liaison between College higher authorities and the Development team, presenting updates, managing feedback, and ensuring aligned project delivery.'
+      'Led a small development team using Godot engine to build a 2D Top-down game for DSU International Affairs as a client project.',
+      'Engineered and designed a navigable digital twin of the college campus, translating real-world layouts into an interactive 2D experience.',
+      'Acted as the primary liaison between College higher authorities and the Development team, presenting updates, managing feedback, and ensuring aligned project delivery.',
+      'Managed project timeline and deliverables while coordinating with stakeholders to meet client requirements and expectations.'
     ]
   }
 ]
 
 export default function Experience() {
+  const [visibleCards, setVisibleCards] = useState<number[]>([])
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.getAttribute('data-index') || '0')
+            setVisibleCards(prev => [...new Set([...prev, index])])
+          }
+        })
+      },
+      { threshold: 0.2 }
+    )
+
+    const cards = document.querySelectorAll('[data-experience-index]')
+    cards.forEach(card => observer.observe(card))
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section id="experience" className="relative py-36 bg-black overflow-hidden">
-      {/* Ambient glow */}
+      {/* Enhanced Ambient glow with animation */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 w-[900px] h-[900px] -translate-x-1/2 -translate-y-1/2 bg-purple-600/10 blur-[180px]" />
-=======
-'use client'
-
-import { useState } from 'react'
-import { Github, X } from 'lucide-react'
-
-type Project = {
-  title: string
-  period: string
-  description: string
-  details: string[]
-  tech: string[]
-  github: string
-}
-
-const projects: Project[] = [
-  {
-    title: 'Formula 1 – 2024 Race Database',
-    period: '2024',
-    description:
-      'End-to-end database system for storing and accessing complete Formula 1 2024 season data.',
-    details: [
-      'Designed normalized relational schemas for race and driver data',
-      'Implemented complex SQL queries for analytics and insights',
-      'Built a simple frontend interface for data access',
-    ],
-    tech: ['PostgreSQL', 'SQL', 'JavaScript', 'HTML', 'CSS'],
-    github: 'https://github.com/Dhinesh-Thiyagarajan/FORMULA-1-2024-DATABASE',
-  },
-  {
-    title: 'Social Media Announcement App',
-    period: '2024',
-    description:
-      'Academic announcement platform inspired by social media interaction models.',
-    details: [
-      'Role-based announcement publishing',
-      'Structured academic communication flow',
-      'Backend–frontend integration',
-    ],
-    tech: ['Java', 'Spring', 'React', 'REST API'],
-    github: 'https://github.com/Abhijay30/social-media-app/tree/main',
-  },
-  {
-    title: 'Top-Down 2D Game',
-    period: '2023',
-    description:
-      'Collaborative 2D game project exploring gameplay mechanics and interaction.',
-    details: [
-      'Player movement and collision handling',
-      'Game loop and state management',
-      'Canvas-based rendering',
-    ],
-    tech: ['JavaScript', 'Game Logic', 'Canvas'],
-    github: 'https://github.com/Abhijay30/top-down-game',
-  },
-]
-
-export default function Projects() {
-  const [activeProject, setActiveProject] = useState<Project | null>(null)
-
-  return (
-    <section id="projects" className="relative py-36 bg-black overflow-hidden">
-      {/* Ambient glow */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 w-[1000px] h-[1000px] -translate-x-1/2 -translate-y-1/2 bg-purple-600/15 blur-[200px]" />
->>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
+        <motion.div 
+          animate={{ 
+            scale: [1, 1.1, 1],
+            opacity: [0.1, 0.15, 0.1]
+          }}
+          transition={{ 
+            duration: 8, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+          className="absolute top-1/2 left-1/2 w-[900px] h-[900px] -translate-x-1/2 -translate-y-1/2 bg-purple-600/10 blur-[180px]" 
+        />
+        <motion.div 
+          animate={{ 
+            x: [0, 100, 0],
+            y: [0, -50, 0]
+          }}
+          transition={{ 
+            duration: 12, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+          className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-blue-600/5 blur-[120px]" 
+        />
       </div>
 
       <div className="relative max-w-6xl mx-auto px-6">
-        {/* Heading */}
-<<<<<<< HEAD
-        <div className="text-center mb-20">
-          <h2 className="text-5xl font-bold mb-2">
-            <span className="text-white">Experience</span>
-          </h2>
-          <div className="w-24 h-1 bg-purple-400 mx-auto mt-4 rounded-full" />
-        </div>
+        {/* Enhanced Heading with stagger animation */}
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center mb-20"
+        >
+          <motion.h2 
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-5xl font-bold mb-2"
+          >
+            <span className="text-white">Professional</span>{' '}
+            <motion.span 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-purple-400"
+            >
+              Experience
+            </motion.span>
+          </motion.h2>
+          <motion.div 
+            initial={{ width: 0 }}
+            whileInView={{ width: 96 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="h-1 bg-gradient-to-r from-purple-600 to-purple-400 mx-auto mt-4 rounded-full" 
+          />
+        </motion.div>
 
         <div className="space-y-12">
           {experiences.map((exp, i) => {
             const Icon = exp.icon
+            const isVisible = visibleCards.includes(i)
+            
             return (
-              <div
+              <motion.div
                 key={i}
-                className="relative rounded-3xl p-0 sm:p-0 bg-gradient-to-br from-[#18122B]/90 via-[#0B0B14]/90 to-[#18122B]/80 border border-purple-500/30 shadow-[0_0_60px_rgba(168,85,247,0.18)] transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-purple-400 hover:shadow-[0_0_80px_rgba(168,85,247,0.25)] overflow-hidden will-change-transform"
+                data-experience-index={i}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: i * 0.3,
+                  ease: "easeOut"
+                }}
+                whileHover={{ 
+                  y: -8,
+                  transition: { duration: 0.3 }
+                }}
+                className="relative rounded-3xl p-0 sm:p-0 bg-gradient-to-br from-[#18122B]/90 via-[#0B0B14]/90 to-[#18122B]/80 border border-purple-500/30 shadow-[0_0_60px_rgba(168,85,247,0.18)] transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-purple-400 hover:shadow-[0_0_80px_rgba(168,85,247,0.25)] overflow-hidden will-change-transform group"
                 style={{ transitionProperty: 'box-shadow, border-color, transform, background' }}
               >
-                {/* Header Row */}
-                <div className="flex items-center gap-4 px-7 pt-7 pb-2 transition-all duration-500 ease-in-out">
-                  <div className="p-3 rounded-xl bg-purple-500/15 flex items-center justify-center">
+                {/* Animated background gradient */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1, delay: i * 0.3 + 0.5 }}
+                  className="absolute inset-0 bg-gradient-to-r from-purple-600/5 via-transparent to-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                />
+
+                {/* Header Row with enhanced animations */}
+                <motion.div 
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: i * 0.3 + 0.2 }}
+                  className="flex items-center gap-4 px-7 pt-7 pb-2 transition-all duration-500 ease-in-out"
+                >
+                  <motion.div 
+                    initial={{ scale: 0, rotate: -180 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{ 
+                      duration: 0.8, 
+                      delay: i * 0.3 + 0.3,
+                      type: "spring",
+                      stiffness: 200
+                    }}
+                    whileHover={{ 
+                      scale: 1.1,
+                      rotate: 5,
+                      transition: { duration: 0.2 }
+                    }}
+                    className="p-3 rounded-xl bg-purple-500/15 flex items-center justify-center"
+                  >
                     <Icon className="w-7 h-7 text-purple-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg sm:text-xl font-bold text-white mb-1">{exp.company}</h3>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: i * 0.3 + 0.4 }}
+                  >
+                    <motion.h3 
+                      className="text-lg sm:text-xl font-bold text-white mb-1"
+                      whileHover={{ color: "#a855f7" }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {exp.company}
+                    </motion.h3>
                     <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-purple-300 font-medium">
-                      <span>{exp.role}</span>
+                      <motion.span
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.4, delay: i * 0.3 + 0.5 }}
+                      >
+                        {exp.role}
+                      </motion.span>
                       <span className="hidden sm:inline">|</span>
-                      <span className="text-gray-400 font-normal">{exp.location}</span>
+                      <motion.span 
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.4, delay: i * 0.3 + 0.6 }}
+                        className="text-gray-400 font-normal"
+                      >
+                        {exp.location}
+                      </motion.span>
                       <span className="hidden sm:inline">|</span>
-                      <span className="text-gray-400 font-normal">{exp.period}</span>
+                      <motion.span 
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.4, delay: i * 0.3 + 0.7 }}
+                        className="text-gray-400 font-normal"
+                      >
+                        {exp.period}
+                      </motion.span>
                     </div>
-                  </div>
-                </div>
-                {/* Description Card */}
-                <div className="px-7 pb-7 pt-2">
+                  </motion.div>
+                </motion.div>
+
+                {/* Description Card with staggered highlight animations */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: i * 0.3 + 0.5 }}
+                  className="px-7 pb-7 pt-2"
+                >
                   <div className="rounded-2xl bg-black/40 border border-purple-500/10 p-5 mb-2 shadow-[0_2px_16px_rgba(168,85,247,0.08)] transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]">
                     <ul className="space-y-3">
                       {exp.highlights.map((h, j) => (
-                        <li
+                        <motion.li
                           key={j}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ 
+                            duration: 0.5, 
+                            delay: i * 0.3 + 0.7 + j * 0.1 
+                          }}
+                          whileHover={{ 
+                            x: 5,
+                            transition: { duration: 0.2 }
+                          }}
                           className="flex items-start gap-2 transition-all duration-500 ease-in-out"
                           style={{ transitionProperty: 'color, background, transform' }}
                         >
-                          <span className="mt-1 w-2 h-2 rounded-full bg-purple-400 inline-block flex-shrink-0 transition-all duration-500 ease-in-out" />
+                          <motion.span 
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ 
+                              duration: 0.3, 
+                              delay: i * 0.3 + 0.8 + j * 0.1,
+                              type: "spring",
+                              stiffness: 300
+                            }}
+                            className="mt-1 w-2 h-2 rounded-full bg-purple-400 inline-block flex-shrink-0 transition-all duration-500 ease-in-out" 
+                          />
                           <span className="text-gray-200 text-sm leading-relaxed transition-all duration-500 ease-in-out">{h}</span>
-                        </li>
+                        </motion.li>
                       ))}
                     </ul>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             )
           })}
         </div>
       </div>
-=======
-        <div className="text-center mb-24">
-          <h2 className="text-4xl font-bold mb-5">
-            <span className="text-white">Project</span>{' '}
-            <span className="text-purple-400">Timeline</span>
-          </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            A chronological view of my project work and technical growth.
-          </p>
-        </div>
-
-        {/* Timeline */}
-        <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-4 top-0 bottom-0 w-px bg-purple-500/40" />
-
-          <div className="space-y-16 pl-16">
-            {projects.map((project) => (
-              <div key={project.title} className="relative">
-                {/* Timeline dot */}
-                <div className="absolute -left-[9px] top-3 w-4 h-4 rounded-full bg-purple-500 shadow-[0_0_15px_rgba(168,85,247,0.8)]" />
-
-                {/* Card */}
-                <div
-                  className="
-                    group relative rounded-3xl p-8
-                    bg-white/5 backdrop-blur-xl
-                    border border-purple-500/20
-                    transition-all duration-500
-                    hover:-translate-y-1
-                    hover:border-purple-400
-                    hover:shadow-[0_0_60px_rgba(168,85,247,0.35)]
-                  "
-                >
-                  {/* Glow */}
-                  <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-tr from-purple-600/20 via-transparent to-purple-400/20 pointer-events-none" />
-
-                  <div className="relative">
-                    {/* Header */}
-                    <div className="flex justify-between items-start mb-4">
-                      <h3 className="text-xl font-semibold text-white">
-                        {project.title}
-                      </h3>
-                      <span className="text-sm text-purple-400">
-                        {project.period}
-                      </span>
-                    </div>
-
-                    <p className="text-gray-300 text-sm mb-4">
-                      {project.description}
-                    </p>
-
-                    {/* Details */}
-                    <ul className="list-disc list-inside text-gray-400 text-sm space-y-1 mb-6">
-                      {project.details.map((d) => (
-                        <li key={d}>{d}</li>
-                      ))}
-                    </ul>
-
-                    {/* Tech */}
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.tech.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1 text-xs rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* CTA */}
-                    <div className="flex gap-6">
-                      <button
-                        onClick={() => setActiveProject(project)}
-                        className="
-                          px-5 py-2 text-sm rounded-full
-                          bg-purple-600 text-white
-                          transition-all duration-300
-                          hover:bg-purple-500
-                          hover:shadow-[0_0_30px_rgba(168,85,247,0.8)]
-                        "
-                      >
-                        View Details
-                      </button>
-
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-sm text-purple-300 hover:text-white transition-colors"
-                      >
-                        <Github className="w-4 h-4" />
-                        Code
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* MODAL */}
-      {activeProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4">
-          <div className="relative max-w-lg w-full rounded-3xl bg-[#0B0B14] border border-purple-500/30 p-8">
-            <button
-              onClick={() => setActiveProject(null)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-white"
-            >
-              <X />
-            </button>
-
-            <h3 className="text-2xl font-semibold text-white mb-4">
-              {activeProject.title}
-            </h3>
-
-            <p className="text-gray-300 text-sm mb-6">
-              {activeProject.description}
-            </p>
-
-            <div className="flex flex-wrap gap-2 mb-6">
-              {activeProject.tech.map((tech) => (
-                <span
-                  key={tech}
-                  className="px-3 py-1 text-xs rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-
-            <a
-              href={activeProject.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-purple-400 hover:text-white transition-colors"
-            >
-              <Github className="w-4 h-4" />
-              View on GitHub
-            </a>
-          </div>
-        </div>
-      )}
->>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
     </section>
   )
 }

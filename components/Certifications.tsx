@@ -6,72 +6,8 @@ import { Brain, Database, Code2 } from 'lucide-react'
 /* ---------- DATA ---------- */
 const certifications = [
   {
-    title: 'Retrieval-Augmented Generation (RAG) Specialization',
-    org: 'DeepLearning.AI',
-    year: '2024',
-    category: 'AI & RAG',
-    description:
-      'Designing LLM systems that retrieve, ground, and generate accurate responses using vector databases.',
-    icon: Brain,
-  },
-  {
-    title: 'Large Language Models & Prompt Engineering',
-    org: 'OpenAI',
-    year: '2024',
-    category: 'AI & RAG',
-    description:
-      'Prompt design, instruction tuning, and optimization techniques for large language models.',
-    icon: Brain,
-  },
-  {
-    title: 'LangChain for LLM Application Development',
-    org: 'LangChain',
-    year: '2024',
-    category: 'AI & RAG',
-    description:
-      'Building production-ready LLM pipelines using chains, agents, tools, and memory.',
-    icon: Brain,
-  },
-  {
-    title: 'AI Agents & Workflow Automation',
-    org: 'Microsoft Learn',
-    year: '2024',
-    category: 'AI & RAG',
-    description:
-      'Creating autonomous agents and automations powered by LLM reasoning.',
-    icon: Brain,
-  },
-  {
-    title: 'PostgreSQL Database Design & Optimization',
-    org: 'Coursera',
-    year: '2023',
-    category: 'Databases',
-    description:
-      'Schema design, indexing strategies, query optimization, and performance tuning.',
-    icon: Database,
-  },
-  {
-    title: 'Advanced SQL for Data Analysis',
-    org: 'HackerRank',
-    year: '2023',
-    category: 'Databases',
-    description:
-      'Complex queries, joins, subqueries, and analytical SQL patterns.',
-    icon: Database,
-  },
-  {
-    title: 'MySQL Performance Tuning',
-    org: 'Udemy',
-    year: '2023',
-    category: 'Databases',
-    description:
-      'Optimizing MySQL queries, indexes, and server configurations.',
-    icon: Database,
-  },
-  {
-<<<<<<< HEAD
     title: 'AWS Certified Solutions Architect – Associate',
-    org: 'Amazon Web Services (AWS)',
+    org: 'Cloud Computing',
     year: '2025',
     category: 'Cloud',
     description:
@@ -79,10 +15,53 @@ const certifications = [
     icon: Database,
   },
   {
-=======
->>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
+    title: 'Advanced SQL for Data Analysis',
+    org: 'Database Management',
+    year: '2024',
+    category: 'Databases',
+    description:
+      'Complex queries, joins, subqueries, and analytical SQL patterns for data analysis.',
+    icon: Database,
+  },
+  {
+    title: 'HTML & JavaScript Fundamentals',
+    org: 'Web Development',
+    year: '2024',
+    category: 'Frontend',
+    description:
+      'Core web development skills including HTML structure and JavaScript programming.',
+    icon: Code2,
+  },
+  {
+    title: 'Chatbot Tools & Development',
+    org: 'AI Development',
+    year: '2024',
+    category: 'AI & Tools',
+    description:
+      'Building conversational AI systems and chatbot applications using IBM tools.',
+    icon: Brain,
+  },
+  {
+    title: 'Power BI Data Visualization',
+    org: 'Business Intelligence',
+    year: '2024',
+    category: 'Analytics',
+    description:
+      'Creating interactive dashboards and data visualizations for business intelligence.',
+    icon: Database,
+  },
+  {
+    title: 'Linux System Administration',
+    org: 'System Administration',
+    year: '2024',
+    category: 'Systems',
+    description:
+      'Command line operations, system configuration, and server management in Linux environments.',
+    icon: Code2,
+  },
+  {
     title: 'Modern React with Hooks & Context',
-    org: 'Meta',
+    org: 'Frontend Development',
     year: '2024',
     category: 'Frontend',
     description:
@@ -91,7 +70,7 @@ const certifications = [
   },
   {
     title: 'Next.js & Full-Stack Web Development',
-    org: 'Vercel',
+    org: 'Full-Stack Development',
     year: '2024',
     category: 'Frontend',
     description:
@@ -172,46 +151,27 @@ export default function Certifications() {
         </div>
 
         {/* grid */}
-<<<<<<< HEAD
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-1 sm:px-0 transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]">
-=======
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
->>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
           {certifications.map((cert, index) => {
             const Icon = cert.icon
             return (
               <div
                 key={index}
                 className={`
-<<<<<<< HEAD
                   group rounded-2xl p-4 sm:p-6
                   bg-white/5 backdrop-blur-md
                   border border-purple-500/20
                   transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]
-=======
-                  group rounded-2xl p-6
-                  bg-white/5 backdrop-blur-md
-                  border border-purple-500/20
-                  transition-all duration-300 ease-out
->>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
                   hover:-translate-y-2
                   hover:border-purple-400
                   hover:shadow-[0_0_40px_rgba(168,85,247,0.4)]
                   ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
                 `}
-<<<<<<< HEAD
                 style={{ transitionDelay: `${index * 70}ms`, transitionProperty: 'box-shadow, border-color, transform, opacity, background' }}
               >
                 {/* icon */}
                 <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-xl bg-purple-500/15 mb-3 sm:mb-4">
                   <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-purple-400" />
-=======
-                style={{ transitionDelay: `${index * 70}ms` }}
-              >
-                {/* icon */}
-                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-purple-500/15 mb-4">
-                  <Icon className="w-6 h-6 text-purple-400" />
->>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
                 </div>
 
                 {/* badge */}
@@ -219,19 +179,11 @@ export default function Certifications() {
                   {cert.category}
                 </span>
 
-<<<<<<< HEAD
                 <h3 className="text-base sm:text-lg font-semibold text-white mb-1 sm:mb-2">
                   {cert.title}
                 </h3>
 
                 <p className="text-xs sm:text-sm text-gray-400 mb-2 sm:mb-3">
-=======
-                <h3 className="text-lg font-semibold text-white mb-2">
-                  {cert.title}
-                </h3>
-
-                <p className="text-sm text-gray-400 mb-3">
->>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
                   {cert.org}
                 </p>
 
@@ -240,11 +192,7 @@ export default function Certifications() {
                 </span>
 
                 {/* description */}
-<<<<<<< HEAD
                 <p className="mt-2 sm:mt-4 text-xs sm:text-sm text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-=======
-                <p className="mt-4 text-sm text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
->>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
                   {cert.description}
                 </p>
               </div>

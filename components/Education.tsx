@@ -1,283 +1,221 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { motion } from 'framer-motion'
+import { GraduationCap, BookOpen, Award } from 'lucide-react'
+
+const educationData = [
+  {
+    institution: 'Dayananda Sagar University',
+    degree: 'B.Tech in Computer Science & Technology',
+    period: '2023 – 2027',
+    status: 'current',
+    description: 'Specializing in AI/ML, Database Systems, and Software Engineering with focus on practical applications and industry-relevant projects.',
+    icon: GraduationCap,
+    color: 'purple'
+  },
+  {
+    institution: 'Jain PU College',
+    degree: 'Pre-University Studies (Science)',
+    period: '2020 – 2022',
+    status: 'completed',
+    description: 'Comprehensive study in Physics, Chemistry, Mathematics, and Computer Science with strong academic performance and leadership development.',
+    icon: BookOpen,
+    color: 'blue'
+  },
+  {
+    institution: 'Shantinikethan Institution of Education',
+    degree: 'Secondary Education',
+    period: 'Until 2020',
+    status: 'completed',
+    description: 'Strong foundation in Mathematics, Science, and Technology with early exposure to programming and problem-solving methodologies.',
+    icon: Award,
+    color: 'green'
+  }
+]
 
 export default function Education() {
+  const [visibleItems, setVisibleItems] = useState<number[]>([])
   const sectionRef = useRef<HTMLDivElement>(null)
-  const futureRef = useRef<HTMLDivElement>(null)
 
-  const [progress, setProgress] = useState(0)
-  const [futureVisible, setFutureVisible] = useState(false)
-
-  /* ---------- Scroll-based progress fill ---------- */
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return
-
-      const rect = sectionRef.current.getBoundingClientRect()
-      const windowHeight = window.innerHeight
-
-      const start = windowHeight * 0.9
-      const end = windowHeight * 0.2
-
-      const rawProgress = (start - rect.top) / (start - end)
-      const clamped = Math.min(Math.max(rawProgress, 0), 1)
-
-      setProgress(clamped)
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    handleScroll()
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  /* ---------- Future card animation ---------- */
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => entry.isIntersecting && setFutureVisible(true),
-      { threshold: 0.4 }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.getAttribute('data-index') || '0')
+            setVisibleItems(prev => [...new Set([...prev, index])])
+          }
+        })
+      },
+      { threshold: 0.3 }
     )
 
-    if (futureRef.current) observer.observe(futureRef.current)
+    const items = document.querySelectorAll('[data-index]')
+    items.forEach(item => observer.observe(item))
+
     return () => observer.disconnect()
   }, [])
 
   return (
-    <section
-      id="education"
-      ref={sectionRef}
-      className="relative py-32 bg-black overflow-hidden"
-    >
-      {/* background glow */}
+    <section id="education" ref={sectionRef} className="relative py-36 bg-black overflow-hidden">
+      {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute left-1/2 top-1/2 w-[900px] h-[900px] -translate-x-1/2 -translate-y-1/2 bg-purple-600/10 blur-[160px]" />
+        <div className="absolute left-1/2 top-1/2 w-[800px] h-[800px] -translate-x-1/2 -translate-y-1/2 bg-purple-600/10 blur-[120px]" />
+        <div className="absolute left-1/4 top-1/4 w-[400px] h-[400px] bg-blue-600/5 blur-[80px]" />
+        <div className="absolute right-1/4 bottom-1/4 w-[300px] h-[300px] bg-green-600/5 blur-[60px]" />
       </div>
 
       <div className="relative max-w-6xl mx-auto px-6">
-        {/* heading */}
-        <div className="text-center mb-20">
-          <h2 className="text-5xl font-bold">
-            <span className="text-white">Education</span>{' '}
-            <span className="text-purple-400">Timeline</span>
+        {/* Header */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
+        >
+          <h2 className="text-5xl font-bold mb-4">
+            <span className="text-white">Educational</span>{' '}
+            <span className="text-purple-400">Journey</span>
           </h2>
-          <div className="w-20 h-1 bg-purple-400 mx-auto mt-4 rounded-full" />
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            A progressive path through academic excellence and continuous learning
+          </p>
+          <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-purple-400 mx-auto mt-6 rounded-full" />
+        </motion.div>
+
+        {/* Timeline */}
+        <div className="relative">
+          {/* Main Timeline Line */}
+          <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-purple-600/50 via-blue-500/30 to-green-500/30" />
+          
+          {/* Timeline Items */}
+          <div className="space-y-12">
+            {educationData.map((item, index) => {
+              const Icon = item.icon
+              const isVisible = visibleItems.includes(index)
+              
+              return (
+                <motion.div
+                  key={index}
+                  data-index={index}
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={isVisible ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.8, delay: index * 0.2 }}
+                  className="relative flex items-start gap-6"
+                >
+                  {/* Timeline Node */}
+                  <div className="relative z-10 flex-shrink-0">
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={isVisible ? { scale: 1 } : {}}
+                      transition={{ duration: 0.5, delay: index * 0.2 + 0.3 }}
+                      className={`
+                        w-12 h-12 rounded-full flex items-center justify-center
+                        ${item.color === 'purple' ? 'bg-purple-600/20 border-2 border-purple-400' : ''}
+                        ${item.color === 'blue' ? 'bg-blue-600/20 border-2 border-blue-400' : ''}
+                        ${item.color === 'green' ? 'bg-green-600/20 border-2 border-green-400' : ''}
+                        backdrop-blur-sm shadow-lg
+                      `}
+                    >
+                      <Icon className={`
+                        w-5 h-5
+                        ${item.color === 'purple' ? 'text-purple-400' : ''}
+                        ${item.color === 'blue' ? 'text-blue-400' : ''}
+                        ${item.color === 'green' ? 'text-green-400' : ''}
+                      `} />
+                    </motion.div>
+                  </div>
+
+                  {/* Content Card */}
+                  <div className="flex-1 min-w-0">
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={isVisible ? { opacity: 1, y: 0 } : {}}
+                      transition={{ duration: 0.6, delay: index * 0.2 + 0.4 }}
+                      className={`
+                        relative p-6 rounded-2xl
+                        bg-gradient-to-br from-white/10 to-white/5
+                        backdrop-blur-xl border border-white/10
+                        hover:border-white/20 transition-all duration-500
+                        hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)]
+                        group
+                      `}
+                    >
+                      {/* Status Badge */}
+                      <div className={`
+                        absolute -top-3 left-4
+                        px-3 py-1 rounded-full text-xs font-semibold
+                        ${item.status === 'current' 
+                          ? 'bg-purple-600 text-white' 
+                          : 'bg-gray-700 text-gray-300'
+                        }
+                      `}>
+                        {item.status === 'current' ? 'Current' : 'Completed'}
+                      </div>
+
+                      {/* Period */}
+                      <div className={`
+                        text-sm font-medium mb-2 mt-2
+                        ${item.color === 'purple' ? 'text-purple-400' : ''}
+                        ${item.color === 'blue' ? 'text-blue-400' : ''}
+                        ${item.color === 'green' ? 'text-green-400' : ''}
+                      `}>
+                        {item.period}
+                      </div>
+
+                      {/* Institution */}
+                      <h3 className="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">
+                        {item.institution}
+                      </h3>
+
+                      {/* Degree */}
+                      <h4 className="text-base sm:text-lg font-semibold text-gray-300 mb-4">
+                        {item.degree}
+                      </h4>
+
+                      {/* Description */}
+                      <p className="text-gray-400 text-sm leading-relaxed">
+                        {item.description}
+                      </p>
+
+                      {/* Decorative Element */}
+                      <div className={`
+                        absolute -z-10 inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500
+                        ${item.color === 'purple' ? 'bg-gradient-to-br from-purple-600/10 to-transparent' : ''}
+                        ${item.color === 'blue' ? 'bg-gradient-to-br from-blue-600/10 to-transparent' : ''}
+                        ${item.color === 'green' ? 'bg-gradient-to-br from-green-600/10 to-transparent' : ''}
+                      `} />
+                    </motion.div>
+                  </div>
+                </motion.div>
+              )
+            })}
+          </div>
         </div>
 
-        {/* timeline */}
-<<<<<<< HEAD
-        <div className="relative flex flex-col md:flex-row md:items-center md:justify-between gap-10 md:gap-0">
-          {/* base line */}
-          <div className="hidden md:block absolute left-0 right-0 top-1/2 h-[2px] bg-purple-800/30" />
-          <div className="block md:hidden absolute left-1/2 top-0 bottom-0 w-[2px] bg-purple-800/30" style={{transform:'translateX(-50%)'}} />
-
-          {/* progress fill */}
-          <div
-            className="hidden md:block absolute left-0 top-1/2 h-[2px] bg-purple-400 shadow-[0_0_20px_rgba(168,85,247,0.6)] transition-all duration-300"
-            style={{ width: `${progress * 100}%` }}
-          />
-          <div
-            className="block md:hidden absolute left-1/2 top-0 bg-purple-400 shadow-[0_0_20px_rgba(168,85,247,0.6)] transition-all duration-300"
-            style={{ height: `${progress * 100}%`, width: '2px', transform:'translateX(-50%)' }}
-          />
-
-          {/* shimmer overlay */}
-          <div className="hidden md:block absolute left-0 right-0 top-1/2 h-[2px] overflow-hidden pointer-events-none">
-=======
-        <div className="relative flex items-center justify-between">
-          {/* base line */}
-          <div className="absolute left-0 right-0 top-1/2 h-[2px] bg-purple-800/30" />
-
-          {/* progress fill */}
-          <div
-            className="absolute left-0 top-1/2 h-[2px] bg-purple-400 shadow-[0_0_20px_rgba(168,85,247,0.6)] transition-all duration-300"
-            style={{ width: `${progress * 100}%` }}
-          />
-
-          {/* shimmer overlay */}
-          <div className="absolute left-0 right-0 top-1/2 h-[2px] overflow-hidden pointer-events-none">
->>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
-            <div
-              className="h-full w-1/3 bg-gradient-to-r from-transparent via-purple-400/50 to-transparent animate-[shimmer_7s_linear_infinite]"
-              style={{ transform: `translateX(${progress * 200}%)` }}
-            />
-          </div>
-<<<<<<< HEAD
-          <div className="block md:hidden absolute left-1/2 top-0 bottom-0 w-[2px] overflow-hidden pointer-events-none" style={{transform:'translateX(-50%)'}}>
-            <div
-              className="w-full h-1/3 bg-gradient-to-b from-transparent via-purple-400/50 to-transparent animate-[shimmer-vert_7s_linear_infinite]"
-              style={{ transform: `translateY(${progress * 200}%)` }}
-            />
-          </div>
-
-          {/* cards */}
-          <div className="flex flex-col md:flex-row w-full">
-            <TimelineCard
-              title="Shantinikethan Institution of Education"
-              subtitle="School Studies"
-              time="Until 2020"
-              mobile
-            />
-
-            <TimelineCard
-              title="Jain PU College"
-              subtitle="Pre-University Studies"
-              time="2020 – 2022"
-              mobile
-            />
-
-            <TimelineCard
-              title="Dayananda Sagar University"
-              subtitle="B.Tech – Computer Science & Technology"
-              time="2023 – 2027"
-              mobile
-            />
-
-            {/* future */}
-            <div className="relative flex flex-col items-center w-full md:w-1/4 mt-10 md:mt-0">
-              <div className="w-4 h-4 rounded-full bg-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.8)] z-10" />
-
-              <div
-                ref={futureRef}
-                className={`
-                  mt-6 px-6 py-4 rounded-2xl
-                  border border-dashed border-purple-500/50
-                  bg-[#0B0B14]/60 backdrop-blur
-                  text-center
-                  transition-all duration-700
-                  ${
-                    futureVisible
-                      ? 'opacity-100 translate-y-0 scale-100'
-                      : 'opacity-0 translate-y-6 scale-95'
-                  }
-                `}
-              >
-                <h4 className="text-purple-400 font-semibold text-lg">
-                  Unexplored Future
-                </h4>
-                <p className="text-gray-400 text-sm mt-1">
-                  Learning • Growth • Innovation
-                </p>
-              </div>
-=======
-
-          {/* cards */}
-          <TimelineCard
-            title="Shantinikethan Institution of Education"
-            subtitle="School Studies"
-            time="Until 2020"
-          />
-
-          <TimelineCard
-            title="Jain PU College"
-            subtitle="Pre-University Studies"
-            time="2020 – 2022"
-          />
-
-          <TimelineCard
-            title="Dayananda Sagar University"
-            subtitle="B.Tech – Computer Science & Technology"
-            time="2023 – 2027"
-          />
-
-          {/* future */}
-          <div className="relative flex flex-col items-center w-1/4">
-            <div className="w-4 h-4 rounded-full bg-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.8)] z-10" />
-
-            <div
-              ref={futureRef}
-              className={`
-                mt-6 px-6 py-4 rounded-2xl
-                border border-dashed border-purple-500/50
-                bg-[#0B0B14]/60 backdrop-blur
-                text-center
-                transition-all duration-700
-                ${
-                  futureVisible
-                    ? 'opacity-100 translate-y-0 scale-100'
-                    : 'opacity-0 translate-y-6 scale-95'
-                }
-              `}
-            >
-              <h4 className="text-purple-400 font-semibold text-lg">
-                Unexplored Future
-              </h4>
-              <p className="text-gray-400 text-sm mt-1">
-                Learning • Growth • Innovation
+        {/* Future Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="mt-24 text-center"
+        >
+          <div className="relative inline-block">
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-600/20 blur-xl rounded-full" />
+            <div className="relative px-8 py-4 rounded-full border border-dashed border-purple-400/50 bg-black/50 backdrop-blur-sm">
+              <h3 className="text-xl font-semibold text-purple-400 mb-2">
+                Continuous Learning Ahead
+              </h3>
+              <p className="text-gray-400 text-sm">
+                Advanced certifications • Research projects • Industry collaboration
               </p>
->>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-
-      {/* shimmer animation */}
-      <style jsx>{`
-        @keyframes shimmer {
-          0% {
-            transform: translateX(-100%);
-          }
-          100% {
-            transform: translateX(300%);
-          }
-        }
-<<<<<<< HEAD
-        @keyframes shimmer-vert {
-          0% {
-            transform: translateY(-100%);
-          }
-          100% {
-            transform: translateY(300%);
-          }
-        }
-=======
->>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
-      `}</style>
     </section>
-  )
-}
-
-/* ---------- Timeline Card ---------- */
-
-function TimelineCard({
-  title,
-  subtitle,
-  time,
-<<<<<<< HEAD
-  mobile,
-=======
->>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
-}: {
-  title: string
-  subtitle: string
-  time: string
-<<<<<<< HEAD
-  mobile?: boolean
-}) {
-  return (
-    <div className="relative flex flex-col items-center w-full md:w-1/4 mb-10 md:mb-0">
-=======
-}) {
-  return (
-    <div className="relative flex flex-col items-center w-1/4">
->>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
-      <div className="w-4 h-4 rounded-full bg-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.8)] z-10" />
-
-      <div
-        className="
-          mt-6 px-6 py-4 rounded-2xl
-          bg-[#0B0B14]/70 backdrop-blur
-          border border-purple-500/30
-          text-center
-          transition-all duration-300
-          hover:-translate-y-1
-          hover:border-purple-400
-          hover:shadow-[0_0_30px_rgba(168,85,247,0.35)]
-        "
-      >
-        <h4 className="text-white font-semibold">{title}</h4>
-        <p className="text-purple-300 text-sm mt-1">{subtitle}</p>
-        <p className="text-gray-400 text-xs mt-2">{time}</p>
-      </div>
-    </div>
   )
 }

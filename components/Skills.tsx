@@ -8,6 +8,7 @@ import {
   Brain,
   Cloud,
   Wrench,
+  Gamepad2,
 } from 'lucide-react'
 
 type Skill = {
@@ -56,6 +57,15 @@ const skillGroups = [
       { name: 'RAG', level: 4, note: 'Vector search & LLM pipelines' },
       { name: 'Machine Learning', level: 3, note: 'Model training basics' },
       { name: 'Computer Vision', level: 3, note: 'Image processing fundamentals' },
+    ],
+  },
+  {
+    title: 'Game Engines',
+    icon: Gamepad2,
+    items: [
+      { name: 'Godot', level: 4, note: '2D game development & scripting' },
+      { name: 'Unity', level: 3, note: '3D environments & C# scripting' },
+      { name: 'Unreal Engine', level: 3, note: 'Blueprint visual scripting' },
     ],
   },
   {

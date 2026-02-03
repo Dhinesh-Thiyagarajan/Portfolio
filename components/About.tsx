@@ -21,19 +21,11 @@ export default function About() {
       <div className="relative max-w-6xl mx-auto px-6">
         {/* ===== SECTION HEADING ===== */}
         <div className="text-center mb-20">
-<<<<<<< HEAD
           <h2 className="text-6xl sm:text-7xl font-extrabold tracking-tight mb-2">
             <span className="text-white">About</span>{' '}
             <span className="text-purple-400">Me</span>
           </h2>
           <div className="w-24 h-1 bg-purple-400 mx-auto mt-4 rounded-full" />
-=======
-          <h2 className="text-5xl font-bold">
-            <span className="text-white">About</span>{' '}
-            <span className="text-purple-400">Me</span>
-          </h2>
-          <div className="w-20 h-1 bg-purple-400 mx-auto mt-4 rounded-full" />
->>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
         </div>
 
         {/* ===== ABOUT CARD ===== */}
@@ -43,7 +35,6 @@ export default function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="
-<<<<<<< HEAD
             relative rounded-[2.2rem] p-6 sm:p-10 md:p-14
             bg-[#0B0B14]/95
             border border-purple-500/40
@@ -52,14 +43,6 @@ export default function About() {
             hover:border-purple-400
             hover:shadow-[0_0_120px_0_rgba(168,85,247,0.32)]
             ring-1 ring-purple-400/10
-=======
-            relative rounded-3xl p-12
-            bg-[#0B0B14]
-            border border-purple-500/20
-            transition-all duration-500
-            hover:border-purple-400
-            hover:shadow-[0_0_80px_rgba(168,85,247,0.25)]
->>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
           "
         >
           {/* Hover glow */}
@@ -88,25 +71,15 @@ export default function About() {
                 }}
                 className="relative"
               >
-<<<<<<< HEAD
                 <div className="absolute -inset-3 rounded-full bg-gradient-to-tr from-purple-600/40 to-purple-400/10 blur-2xl" />
-=======
-                <div className="absolute -inset-2 rounded-full bg-gradient-to-tr from-purple-600/40 to-purple-400/10 blur-md" />
->>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
 
                 <img
                   src="/pfp.JPEG"
                   alt="Dhinesh Thiyagarajan"
                   className="
-<<<<<<< HEAD
                     relative w-64 h-64 sm:w-72 sm:h-72 object-cover rounded-full
                     border-4 border-purple-500/20
                     shadow-[0_0_60px_0_rgba(168,85,247,0.18)]
-=======
-                    relative w-72 h-72 object-cover rounded-full
-                    border border-purple-500/30
-                    shadow-xl
->>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
                   "
                 />
               </motion.div>
@@ -114,22 +87,14 @@ export default function About() {
 
             {/* TEXT */}
             <div>
-<<<<<<< HEAD
               <p className="text-lg sm:text-xl font-semibold text-cyan-400 mb-4 sm:mb-6">
-=======
-              <p className="text-xl font-semibold text-cyan-400 mb-6">
->>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
                 B.Tech in Computer Science and Technology{' '}
                 <span className="text-gray-300 font-normal">
                   from Dayananda Sagar University
                 </span>
               </p>
 
-<<<<<<< HEAD
               <p className="text-gray-300 leading-relaxed text-base sm:text-lg">
-=======
-              <p className="text-gray-300 leading-relaxed text-lg">
->>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
                 I am a Computer Science student with strong interests in artificial
                 intelligence, databases, and modern software development. I enjoy
                 building practical, data-driven systems and scalable products that
@@ -162,7 +127,6 @@ export default function About() {
                 transition={{ duration: 0.45, ease: 'easeOut' }}
                 className="
                   group flex items-start gap-3
-<<<<<<< HEAD
                   p-4 sm:p-5 rounded-2xl
                   bg-[#18122B]/90
                   border border-purple-500/20
@@ -171,15 +135,6 @@ export default function About() {
                   hover:-translate-y-1
                   hover:border-purple-400
                   hover:shadow-[0_0_36px_rgba(168,85,247,0.22)]
-=======
-                  p-5 rounded-xl
-                  bg-[#0F0F1A]
-                  border border-purple-800/30
-                  transition-all duration-300
-                  hover:-translate-y-1
-                  hover:border-purple-500
-                  hover:shadow-[0_0_30px_rgba(168,85,247,0.35)]
->>>>>>> e0d8f9a3329178977c4456887931508233f82e9f
                 "
               >
                 <span

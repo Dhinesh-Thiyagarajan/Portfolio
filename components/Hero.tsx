@@ -82,55 +82,147 @@ export default function Hero() {
 
       {/* ================= CONTENT ================= */}
       <div className="relative z-10 text-center px-6">
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="text-5xl md:text-7xl font-bold mb-6"
-        >
-          <span className="text-white">Dhinesh</span>{' '}
-          <span className="text-purple-400">Thiyagarajan</span>
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.7 }}
-          className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-10"
-        >
-          Computer Science Student · Databases · AI · Product Development
-        </motion.p>
-
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.55, duration: 0.6 }}
-          className="flex justify-center gap-6"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
-          <a
-            href="#projects"
-            className="
-              px-6 py-3 rounded-full
-              bg-purple-600 text-white
-              transition
-              hover:bg-purple-500
-              hover:shadow-[0_0_30px_rgba(168,85,247,0.7)]
-            "
+          <motion.h1
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="text-5xl md:text-7xl font-bold mb-6"
           >
-            View My Work
-          </a>
+            <motion.span 
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-white inline-block"
+            >
+              Dhinesh
+            </motion.span>{' '}
+            <motion.span 
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="text-purple-400 inline-block"
+            >
+              Thiyagarajan
+            </motion.span>
+          </motion.h1>
 
-          <a
-            href="#contact"
-            className="
-              px-6 py-3 rounded-full
-              border border-purple-400 text-purple-300
-              transition
-              hover:bg-purple-400 hover:text-black
-            "
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: "100%" }}
+            transition={{ duration: 1, delay: 0.9 }}
+            className="h-px bg-gradient-to-r from-transparent via-purple-400 to-transparent mb-8 max-w-md mx-auto"
+          />
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.1, duration: 0.8, ease: "easeOut" }}
+            className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-10"
           >
-            Get In Touch
-          </a>
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.3, duration: 0.6 }}
+            >
+              Computer Science Student
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.5, duration: 0.6 }}
+            >
+              {' · '}
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.7, duration: 0.6 }}
+            >
+              Databases
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.9, duration: 0.6 }}
+            >
+              {' · '}
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 2.1, duration: 0.6 }}
+            >
+              AI
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 2.3, duration: 0.6 }}
+            >
+              {' · '}
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 2.5, duration: 0.6 }}
+            >
+              Product Development
+            </motion.span>
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2.7, duration: 0.8 }}
+            className="flex justify-center gap-6"
+          >
+            <motion.a
+              href="#projects"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 2.9, duration: 0.5, type: "spring", stiffness: 200 }}
+              whileHover={{ 
+                scale: 1.05,
+                boxShadow: "0 0 40px rgba(168,85,247,0.8)",
+                transition: { duration: 0.2 }
+              }}
+              whileTap={{ scale: 0.95 }}
+              className="
+                px-6 py-3 rounded-full
+                bg-purple-600 text-white
+                transition-all duration-300
+                hover:bg-purple-500
+              "
+            >
+              View My Work
+            </motion.a>
+
+            <motion.a
+              href="#contact"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 3.1, duration: 0.5, type: "spring", stiffness: 200 }}
+              whileHover={{ 
+                scale: 1.05,
+                backgroundColor: "rgba(168,85,247,0.4)",
+                color: "#000",
+                transition: { duration: 0.2 }
+              }}
+              whileTap={{ scale: 0.95 }}
+              className="
+                px-6 py-3 rounded-full
+                border border-purple-400 text-purple-300
+                transition-all duration-300
+              "
+            >
+              Get In Touch
+            </motion.a>
+          </motion.div>
         </motion.div>
       </div>
     </section>
