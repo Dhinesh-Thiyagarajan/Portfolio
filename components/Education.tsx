@@ -194,27 +194,6 @@ export default function Education() {
             })}
           </div>
         </div>
-
-        {/* Future Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-24 text-center"
-        >
-          <div className="relative inline-block">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-600/20 blur-xl rounded-full" />
-            <div className="relative px-8 py-4 rounded-full border border-dashed border-purple-400/50 bg-black/50 backdrop-blur-sm">
-              <h3 className="text-xl font-semibold text-purple-400 mb-2">
-                Continuous Learning Ahead
-              </h3>
-              <p className="text-gray-400 text-sm">
-                Advanced certifications • Research projects • Industry collaboration
-              </p>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   )
