@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { Briefcase, Gamepad2 } from 'lucide-react'
+import { Briefcase, Gamepad2, ExternalLink } from 'lucide-react'
 
 const experiences = [
   {
@@ -10,6 +10,7 @@ const experiences = [
     role: 'Product Developer Intern',
     location: 'Bengaluru, India',
     period: 'January 2026',
+    website: 'https://hal-india.co.in/home',
     icon: Briefcase,
     highlights: [
       'Executed the full SDLC within an Agile environment, translating complex user requirements into scalable system architecture and robust deployment pipelines.',
@@ -24,6 +25,7 @@ const experiences = [
     role: 'Game Development Lead',
     location: 'Bengaluru, India',
     period: 'January 2026',
+    website: 'https://dsu.edu.in/international/international-affairs/',
     icon: Gamepad2,
     highlights: [
       'Led a small development team using Godot engine to build a 2D Top-down game for DSU International Affairs as a client project.',
@@ -217,6 +219,36 @@ export default function Experience() {
                         {exp.period}
                       </motion.span>
                     </div>
+                    
+                    {/* Company Website Button */}
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5, delay: i * 0.3 + 0.8, type: "spring", stiffness: 200 }}
+                      className="mt-3"
+                    >
+                      <motion.a
+                        href={exp.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ 
+                          scale: 1.05,
+                          transition: { duration: 0.2 }
+                        }}
+                        whileTap={{ scale: 0.95 }}
+                        className="
+                          inline-flex items-center gap-2
+                          px-4 py-2 text-sm rounded-full
+                          bg-purple-600/20 text-purple-300 border border-purple-500/30
+                          transition-all duration-300
+                          hover:bg-purple-600/40 hover:text-white hover:border-purple-400
+                          cursor-pointer relative z-10
+                        "
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        Visit Company
+                      </motion.a>
+                    </motion.div>
                   </motion.div>
                 </motion.div>
 

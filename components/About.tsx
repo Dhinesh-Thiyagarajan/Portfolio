@@ -3,12 +3,12 @@ import { motion } from 'framer-motion'
 
 export default function About() {
   const specializations = [
-    'LLMs & Fine-tuning (LoRA, PEFT, Deepspeed, Unsloth)',
     'Retrieval-Augmented Generation (RAG)',
-    'NER & Medical Text Summarization',
-    'AI Automation & Low-code / No-code Tools',
-    'LLM APIs (OpenAI, Gemini, Groq, etc.)',
-    'MCP Servers & LangChain Pipelines',
+    'Full Stack Development',
+    'SQL Database Design & Management',
+    'AI & Machine Learning Applications',
+    'IBM Tools & Enterprise Solutions',
+    'Godot Game Engine Development',
   ]
 
   return (
@@ -107,24 +107,23 @@ export default function About() {
         {/* ===== SPECIALIZATIONS ===== */}
         <div className="mt-24">
           <h3 className="text-2xl font-semibold text-purple-400 mb-10 text-center">
-            I specialize in:
+            I focus on:
           </h3>
 
           <motion.div
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ staggerChildren: 0.12 }}
+            transition={{ duration: 0.6, staggerChildren: 0.1 }}
             className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {specializations.map((item) => (
+            {specializations.map((item, index) => (
               <motion.div
                 key={item}
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                transition={{ duration: 0.45, ease: 'easeOut' }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="
                   group flex items-start gap-3
                   p-4 sm:p-5 rounded-2xl
