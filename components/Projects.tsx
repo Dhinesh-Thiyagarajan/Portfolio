@@ -14,13 +14,22 @@ type Project = {
 
 const projects: Project[] = [
   {
+    title: 'Mushroom Detection and Mapping Pipeline',
+    description:
+      'Computer vision pipeline for detecting, counting, and mapping mushrooms with custom YOLOv8 model training.',
+    longDescription:
+      'A complete mushroom detection system that detects mushrooms in images, counts them, estimates their sizes, and generates spatial distribution maps. Successfully trained a custom YOLOv8 model that improved detection accuracy from 22% to 58%. The pipeline handles variable lighting and camera angles, produces normalized coordinate maps, and generates structured CSV outputs with detection data.',
+    tech: ['Python', 'YOLOv8', 'Computer Vision', 'OpenCV', 'PyTorch', 'Machine Learning'],
+    github: 'https://github.com/Dhinesh-Thiyagarajan/mushroom_detection',
+  },
+  {
     title: 'Interview Audio Transcript & Summarization App',
     description:
       'AI-powered application for transcribing and summarizing interview audio for HAL.',
     longDescription:
       'Developed for Hindustan Aeronautics Limited (HAL) to streamline interview processes. The application uses speech-to-text technology to transcribe audio interviews and employs AI summarization to extract key insights and candidate highlights, improving HR efficiency and decision-making.',
     tech: ['Python', 'OpenAI Whisper', 'AI/ML', 'Audio Processing', 'NLP'],
-    github: 'https://github.com/Dhinesh-Thiyagarajan',
+    github: 'https://github.com/Dhinesh-Thiyagarajan/audio_transcript_summarization',
   },
   {
     title: 'Top-Down 2D Game for DSU International Affairs',

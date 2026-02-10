@@ -60,6 +60,15 @@ const skillGroups = [
     ],
   },
   {
+    title: 'Models',
+    icon: Brain,
+    items: [
+      { name: 'YOLOv8', level: 3, note: 'Object detection & custom training' },
+      { name: 'Ollama', level: 3, note: 'Local LLM deployment' },
+      { name: 'Whisper', level: 3, note: 'Speech-to-text transcription' },
+    ],
+  },
+  {
     title: 'Game Engines',
     icon: Gamepad2,
     items: [
