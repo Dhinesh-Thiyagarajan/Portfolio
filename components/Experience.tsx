@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { Briefcase, Gamepad2, ExternalLink } from 'lucide-react'
+import { Briefcase, Gamepad2, ExternalLink, Award } from 'lucide-react'
 
 const experiences = [
   {
@@ -11,6 +11,7 @@ const experiences = [
     location: 'Bengaluru, India',
     period: 'January 2026',
     website: 'https://hal-india.co.in/home',
+    certificate: '/Hal certificate .pdf',
     icon: Briefcase,
     highlights: [
       'Executed the full SDLC within an Agile environment, translating complex user requirements into scalable system architecture and robust deployment pipelines.',
@@ -220,12 +221,12 @@ export default function Experience() {
                       </motion.span>
                     </div>
                     
-                    {/* Company Website Button */}
+                    {/* Company Website and Certificate Buttons */}
                     <motion.div
                       initial={{ opacity: 0, scale: 0 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.5, delay: i * 0.3 + 0.8, type: "spring", stiffness: 200 }}
-                      className="mt-3"
+                      className="mt-3 flex flex-wrap gap-3"
                     >
                       <motion.a
                         href={exp.website}
@@ -248,6 +249,30 @@ export default function Experience() {
                         <ExternalLink className="w-4 h-4" />
                         Visit Company
                       </motion.a>
+
+                      {exp.certificate && (
+                        <motion.a
+                          href={exp.certificate}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ 
+                            scale: 1.05,
+                            transition: { duration: 0.2 }
+                          }}
+                          whileTap={{ scale: 0.95 }}
+                          className="
+                            inline-flex items-center gap-2
+                            px-4 py-2 text-sm rounded-full
+                            bg-green-600/20 text-green-300 border border-green-500/30
+                            transition-all duration-300
+                            hover:bg-green-600/40 hover:text-white hover:border-green-400
+                            cursor-pointer relative z-10
+                          "
+                        >
+                          <Award className="w-4 h-4" />
+                          View Certificate
+                        </motion.a>
+                      )}
                     </motion.div>
                   </motion.div>
                 </motion.div>

@@ -107,7 +107,7 @@ export default function About() {
         {/* ===== SPECIALIZATIONS ===== */}
         <div className="mt-24">
           <h3 className="text-2xl font-semibold text-purple-400 mb-10 text-center">
-            I focus on:
+            Core Competencies
           </h3>
 
           <motion.div
